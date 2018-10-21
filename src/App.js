@@ -1,26 +1,64 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Preview from './Components/Preview';
+import Form from './Components/Form'
 
 class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      data: {
+        date: '',
+        status: '',
+        msg: ''
+      }
+    };
+    this.handleStatus = this.handleStatus.bind(this);
+    this.handleDate = this.handleDate.bind(this);
+    this.handleMsg = this.handleMsg.bind(this);
+  }
+  handleStatus(event) {
+    this.setState({
+      data: {
+        ...this.state.data,
+        status: event.target.value
+      }
+    })
+  }
+
+  handleDate(event) {
+    this.setState({
+      data: {
+        ...this.state.data,
+        date: event.target.value
+      }
+    })
+  }
+
+  handleMsg(event) {
+    this.setState({
+      data: {
+        ...this.state.data,
+        msg: event.target.value
+      }
+    })
+  }
+
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <main className="App">
+        <Preview
+          date={this.state.data.date}
+          status={this.state.data.status}
+          msg={this.state.data.msg} />
+        <Form
+          date={this.state.data.date}
+          msg={this.state.data.msg}
+          handleDate={this.handleDate}
+          handleStatus={this.handleStatus}
+          handleMsg={this.handleMsg}
+        />
+      </main>
     );
   }
 }
