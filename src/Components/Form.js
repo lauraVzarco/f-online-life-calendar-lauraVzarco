@@ -8,7 +8,8 @@ class Form extends Component {
             handleStatus,
             handleMsg,
             date,
-            msg
+            msg,
+            onSubmit
         } = this.props
         return (
             <section>
@@ -26,7 +27,7 @@ class Form extends Component {
                         value=":)"
                         onChange={handleStatus}
                     />
-                    <label htmlFor=":("> :) </label>
+                    <label htmlFor=":("> :( </label>
                     <input
                         type="radio"
                         name="animo"
@@ -40,9 +41,8 @@ class Form extends Component {
                         value={msg}
                         onChange={handleMsg}
                     />
-                    <input
-                        type="submit"
-                        value="Guardar" />
+                    <button
+                        onClick={onSubmit}> Guardar </button>
                 </form>
             </section>
         );

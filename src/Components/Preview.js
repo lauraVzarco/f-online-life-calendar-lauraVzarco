@@ -3,17 +3,14 @@ import '../App.css';
 
 class Preview extends Component {
     render() {
-        const {
-            date,
-            status,
-            msg
-        } = this.props;
-
         return (
             <section>
                 <button> + </button>
-                <div> {status}</div>
-                <div>{date} {msg} </div>
+                <ul>
+                    {this.props.previousDays.map((day) => <li> {day.status} {day.date} {day.msg}
+                    </li>)}
+                </ul>
+
             </section>
         );
     }
