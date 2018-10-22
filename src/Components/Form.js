@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import '../App.css';
+import { Link } from 'react-router-dom';
 
 class Form extends Component {
     render() {
@@ -41,8 +42,9 @@ class Form extends Component {
                         value={msg}
                         onChange={handleMsg}
                     />
-                    <button
-                        onClick={onSubmit}> Guardar </button>
+
+
+                    <Link className="backToHome" to={'/'}> <button onClick={onSubmit}>Guardar</button> </Link>
                 </form>
             </section>
         );

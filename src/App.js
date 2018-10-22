@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
 import Preview from './Components/Preview';
-import Form from './Components/Form'
+import Form from './Components/Form';
+import { Route, Switch } from 'react-router-dom';
 
 class App extends Component {
   constructor() {
@@ -73,19 +74,28 @@ class App extends Component {
   render() {
     return (
       <main className="App">
-        <Preview
-          date={this.state.currentDay.date}
-          status={this.state.currentDay.status}
-          msg={this.state.currentDay.msg}
-          previousDays={this.state.previousDays} />
-        <Form
-          date={this.state.currentDay.date}
-          msg={this.state.currentDay.msg}
-          handleDate={this.handleDate}
-          handleStatus={this.handleStatus}
-          handleMsg={this.handleMsg}
-          onSubmit={this.onSubmit}
-        />
+        <Switch>
+          <Route
+            exact path='/'
+            render={() =>
+              <Preview
+                date={this.state.currentDay.date}
+                status={this.state.currentDay.status}
+                msg={this.state.currentDay.msg}
+                previousDays={this.state.previousDays} />} />
+
+          <Route
+            path='/form'
+            render={() =>
+              <Form
+                date={this.state.currentDay.date}
+                msg={this.state.currentDay.msg}
+                handleDate={this.handleDate}
+                handleStatus={this.handleStatus}
+                handleMsg={this.handleMsg}
+                onSubmit={this.onSubmit}
+              />} />
+        </Switch>
       </main>
     );
   }
