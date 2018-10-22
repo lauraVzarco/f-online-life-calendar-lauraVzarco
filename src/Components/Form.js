@@ -42,9 +42,8 @@ class Form extends Component {
                         value={msg}
                         onChange={handleMsg}
                     />
-
-
-                    <Link className="backToHome" to={'/'}> <button onClick={onSubmit}>Guardar</button> </Link>
+                    <button onClick={onSubmit}> Guardar </button>
+                    <Link className="backToHome" to={'/'}> <div> Volver </div> </Link>
                 </form>
             </section>
         );
